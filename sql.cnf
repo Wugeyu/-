@@ -1,0 +1,61 @@
+
+[mysqld]
+port=3306
+default_authentication_plugin=mysql_native_password
+server-id=1
+user=mysql
+datadir=/mdata/data1
+log_error = error.log
+# slow log
+slow_query_log = 1
+slow_query_log_file = slow.log
+long_query_time = 2
+min_examined_row_limit = 100
+log-queries-not-using-indexes
+log_throttle_queries_not_using_indexes = 10
+log-slow-admin-statements
+log_slow_slave_statements
+general_log = 0
+general_log_file = gereral.log
+
+[mysqld-5.7]
+log_timestamps = system
+
+
+[mysqld_multi]
+mysqld=/usr/local/mysql/bin/mysqld_safe
+mysqladmin=/usr/local/mysql/bin/mysqladmin
+log=/usr/local/mysql/mysqld_multi.log
+
+
+
+[mysqld1]
+port=3307
+server-id=11
+innodb_buffer_pool_size = 32M
+datadir=/mdata/data2
+socket = /tmp/mysql.sock2
+
+[mysqld2]
+port=3356
+server-id=12
+innodb_buffer_pool_size = 32M
+mysqld=/usr/local/mysql56/bin/mysqld
+basedir=/usr/local/mysql56
+datadir=/mdata/data56
+socket = /tmp/mysql.sock56
+
+[mysqld3]
+port=3380
+server-id=13
+innodb_buffer_pool_size = 32M
+mysqld = /usr/local/mysql80/bin/mysqld
+basedir=/usr/local/mysql80
+datadir=/mdata/data80
+socket = /tmp/mysql.sock80
+
+
+
+
+
+
